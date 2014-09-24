@@ -1,6 +1,6 @@
 # 学习文档目录
 
-##[Github使用](https://github.com/meshinestar/notes/tree/master/Github_How_Toa)
+##[Github使用](https://github.com/meshinestar/notes/tree/master/Github_How_To)
 
 - [Github设置ssh代理](https://github.com/meshinestar/notes/blob/master/Github_How_To/ssh_proxy.md)
 
