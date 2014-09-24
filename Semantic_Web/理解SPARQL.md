@@ -58,7 +58,7 @@ RDF 可以描述任何事物，包括它自身，因此可以从很小的一层�
 
 *图1：语义 Web：W3C Web 体系结构的技术组合*
 
-![语义 Web：W3C Web 体系结构的技术组合](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig01.gif)
+![语义 Web：W3C Web 体系结构的技术组合](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig01.gif)
 
 下一节将介绍如何构造 RDF，以及如何使用 RDF 构建世界模型。
 
@@ -74,7 +74,7 @@ RDF 曾经被称为 “元描述语言”，但这种有趣的提法不过是说
 
 *图2：RDF 图的直观表示，包含 Subject 和 Object 之间的一个谓语关系陈述*
 
-![RDF 图的直观表示，包含 Subject 和 Object 之间的一个谓语关系陈述](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig02.gif)
+![RDF 图的直观表示，包含 Subject 和 Object 之间的一个谓语关系陈述](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig02.gif)
 
 RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI 标识的节点，称为空白节点（Blank Node）或空白节点标识符（Blank Node Identifier），作为用于本地引用的临时的、内部可见的标识符。RDF 规范指出，虽然提供了将 RDF 序列化为 XML 的一个标准，但是允许使用任何等价的结构。下面的 RDF XML 描述关于作者的一个三元组（如清单 1 所示）。
 
@@ -100,7 +100,7 @@ RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI �
 
 *图 3. 用一条语句声明‘Andrew’ 和 ‘guitar’ 通过 ‘playsInstrument’ 关系相关联*
 
-![用一条语句声明‘Andrew’ 和 ‘guitar’ 通过 ‘playsInstrument’ 关系相关联](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig03.gif)
+![用一条语句声明‘Andrew’ 和 ‘guitar’ 通过 ‘playsInstrument’ 关系相关联](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig03.gif)
 
 除了用于在 RDF 文件中嵌入 XML 的 XML Literal 类型外，RDF 没有内置类型。可以使用 XML Schema 定义的以及那些最常用的数据类型。
 
@@ -124,7 +124,7 @@ RDF 中的每个节点和谓语都用 URI 标识。RDF 也允许不使用 URI �
 
 *图 4. 关于 Andrew 和他的吉他的语句*
 
-![图 4. 关于 Andrew 和他的吉他的语句](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig04.gif)
+![图 4. 关于 Andrew 和他的吉他的语句](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig04.gif)
 
 RDF 没有定义标准数据结构。和一般的编程语言一样，语言设计者使用简单的结构进行扩展。RDF 提供了 ‘包’、‘序列’ 和 ‘替换列表’。这些结构通过三元组实现，暂时先不要管。如果想进一步研究，请阅读 RDF Primer（链接见 参考资料）。Turtle 为这些数据结构提供了原生的语法支持。列表的声明为：:andrew :child (:emily :thomas)。
 
@@ -183,7 +183,7 @@ RDFS 定义了一个三元组谓语 rdfs:type，声明资源的类型。允许�
 
 *图 5. 清单 8 创建的类的层次结构（使用 UML 表示图）*
 
-![图 5. 清单 8 创建的类的层次结构（使用 UML 表示图）](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig05.gif)
+![图 5. 清单 8 创建的类的层次结构（使用 UML 表示图）](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig05.gif)
 
 定义类的实例和类声明非常相似。RDFS 通过 rdfs:subClassOf 谓语表明主语是一个类而不是实例（如清单 9 所示），从而区分类声明三元组和成员。
 
@@ -357,7 +357,7 @@ RDFS 提供的设施和 OWL 相比非常少。OWL 提供了大量的方法来描
 现在可以进行 SPARQL 查询了。Joseki 自带的 Web 服务器提供了 SPARQL 查询表单。表单的位置是 http://localhost:2020/sparql.html。运行 Joseki 之后单击该链接即可打开 SPARQL 查询表单（如图 6 所示）。
 
 *图 6. 在 Joseki 上尝试查询的 SPARQLer 网页*
-![在 Joseki 上尝试查询的 SPARQLer 网页](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig06.jpg)
+![在 Joseki 上尝试查询的 SPARQLer 网页](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig06.jpg)
 
 Joseki 是接收和响应 SPARQL 查询的 HTTP 端点。它以 Jena Semantic Web 框架为基础，后者提供了三元组库功能。Joseki 还提供了简单的 Java servlet 引擎作为 Web 端点。并利用它呈现 Web 查询表单，允许手动执行查询。真正的产品中不会使用该查询表单。将会使用 SPARQL API（Jena 框架就提供了这样的 API）通过编程来表示查询。实际上没有 Web 也能使用 SPARQL 。如果有本地三元组库，可直接使用 SPARQL 对其进行访问。SPARQL 协议定义了在 Web 上如何通信。
 
@@ -390,7 +390,7 @@ Joseki 和 Jena 都是用 Java 语言编写的，不过在本教程中不需要�
 
 *图 7. 典型的语义 Web 应用程序体系结构*
 
-![图 7. 典型的语义 Web 应用程序体系结构](/media/joshua/My_Resource/Documents/Semantic_Web/img/fig07.gif)
+![图 7. 典型的语义 Web 应用程序体系结构](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig07.gif)
 
 首先定义存放服务数据的服务。称为 “JournalService”。清单 19 显示了服务配置的内容。
 
@@ -433,13 +433,21 @@ Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle�
 上述步骤都是漫长的预备阶段，目标就是为了编写一个查询。我们讨论了很多基础知识，包括 RDF、RDFS、OWL 以及 Turtle，如果手工编写 RDF 的话 Turtle 可能是最好的办法。还介绍了如何结合并保存本体，配置在 Web 上进行发布的 SPARQL 端点。
 最后，可以编写团队日志和跟踪系统了。这些查询是为了增强团队沟通，帮助资源管理者在向客户提供建议之前确定合适的人员。需要开发的查询如下。这些查询按照从易到难的顺序排列，逐渐增加 SPARQL 查询的复杂程度。
 
-- 按照日期顺序取得所有预约的列表
-- 通过关键字筛选所有日志条目的注释
-- 获取给定用户登记的全部技能/技术列表
-- 获得具备所需特定技能的所有用户的列表
-- 获得指定日期范围内记录日志的用户列表
-- 回答关于团队和客户当前状态的问题
+1. 按照日期顺序取得所有预约的列表
+2. 通过关键字筛选所有日志条目的注释
+3. 获取给定用户登记的全部技能/技术列表
+4. 获得具备所需特定技能的所有用户的列表
+5. 获得指定日期范围内记录日志的用户列表
+6. 回答关于团队和客户当前状态的问题
 
 SPARQL 提供了四种不同形式的查询：SELECT、ASK、DESCRIBE 和 CONSTRUCT。我将通过几个查询来说明每种查询类型的不同形式、各种语法技巧、变化形式和查询的用途。这些查询有很多共性。在大多数情况下，我都使用 SELECT 形式来介绍，因为这可能是最常用的查询类型。
+
 SELECT 查询形式用于标准查询。以标准 SPARQL XML 结果格式返回查询结果。本节中多数查询都要用到 SELECT 查询。ASK 的结果是 yes/no，没有具体内容，后面的 清单 33 将会展示。DESCRIBE 用于提取本体和实例数据的一部分。CONSTRUCT 根据查询图的结果生成 RDF，在 下载 部分的代码中可以找到一些例子。
+
 为了节约空间，本教程中的例子将只保留前两个结果，除非必须看到全部内容。多数查询返回的结果都多于两个。如果您痛恨那些罗罗嗦嗦的手册和书籍，我和您一样。本教程会尽量避免这种情况。本教程中重复的一个地方是查询的前缀。查询应该能够立即使用，因此它们必须是自成体系的。您可以直接将其拖到查询表单中执行。
+
+**分解查询**
+
+清单 22 中的查询获取所有的注释并按照时间先后返回。这一节我们看看典型的 SPARQL 查询语法。下一节 将讨论三元组库用于查找和查询匹配的三元组的算法。
+
+
