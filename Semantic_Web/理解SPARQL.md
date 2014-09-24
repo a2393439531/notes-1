@@ -357,6 +357,7 @@ RDFS 提供的设施和 OWL 相比非常少。OWL 提供了大量的方法来描
 现在可以进行 SPARQL 查询了。Joseki 自带的 Web 服务器提供了 SPARQL 查询表单。表单的位置是 http://localhost:2020/sparql.html。运行 Joseki 之后单击该链接即可打开 SPARQL 查询表单（如图 6 所示）。
 
 *图 6. 在 Joseki 上尝试查询的 SPARQLer 网页*
+
 ![在 Joseki 上尝试查询的 SPARQLer 网页](https://raw.githubusercontent.com/meshinestar/notes/master/Semantic_Web/img/fig06.jpg)
 
 Joseki 是接收和响应 SPARQL 查询的 HTTP 端点。它以 Jena Semantic Web 框架为基础，后者提供了三元组库功能。Joseki 还提供了简单的 Java servlet 引擎作为 Web 端点。并利用它呈现 Web 查询表单，允许手动执行查询。真正的产品中不会使用该查询表单。将会使用 SPARQL API（Jena 框架就提供了这样的 API）通过编程来表示查询。实际上没有 Web 也能使用 SPARQL 。如果有本地三元组库，可直接使用 SPARQL 对其进行访问。SPARQL 协议定义了在 Web 上如何通信。
