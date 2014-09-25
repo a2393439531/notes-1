@@ -141,8 +141,8 @@ RDF 没有定义标准数据结构。和一般的编程语言一样，语言设�
 *清单 6. 使用谓语-宾语列表描述单个主语的多条语句*
 
     _:JohnConnor a u:User;
-     u:domainLogin "someDomain/john.connor";
-     u:displayName "John Connor" .
+      u:domainLogin "someDomain/john.connor";
+      u:displayName "John Connor" .
 
 _:JohnConnor 是一个空白节点（用前导下划线表示），可在本地引用。您可能希望通过这种方式编写 RDF，而不使用 “:JohnConnor”（外部可见的），因为域登录和将资源绑定到了 LDAP（轻型目录访问协议），这可能是您的本地资源。两种选择都可以。
 
@@ -151,11 +151,11 @@ _:JohnConnor 是一个空白节点（用前导下划线表示），可在本地�
 *清单 7. 使用空白节点语法和谓语-宾语列表建立没有标识符的完整主语*
 
     [] a j:JournalEntry;
-     j:date "20080205T09:00:00"^^xsdt:dateTime;
-     j:user _:JohnConnor;
-     j:notes """Today I learnt how to defraud ATM machines and how to field strip a machine gun blindfolded.""";
-     j:tag "armaments";
-     j:tag "cash".
+      j:date "20080205T09:00:00"^^xsdt:dateTime;
+      j:user _:JohnConnor;
+      j:notes """Today I learnt how to defraud ATM machines and how to field strip a machine gun blindfolded.""";
+      j:tag "armaments";
+      j:tag "cash".
 
 如果没有名称，或者不希望用毫无意义的标识符污染应用程序名称空间，则可以采用这种形式。毕竟，使用 SPARQL，可以根据相关的数据而不仅仅是 URI 来查询资源。使用空白节点的时候，三元组库将独立地定位空白节点标识符。这种形式适用于一次性的资源，因为在资源定义后面的句点之后就无法直接链接一次性资源了。
 
@@ -205,23 +205,23 @@ RDFS 也提供类的属性。清单 11 说明了属性的声明方法。
 
 *清单 11. 为类 :HeavenlyBody 定义属性*
     :massKg
-     rdfs:domain :HeavenlyBody;
-     rdfs:range xsdt:double .
+      rdfs:domain :HeavenlyBody;
+      rdfs:range xsdt:double .
 
 这里声明的属性 :massKg 从 :HeavenlyBody 映射到一个双精度数。换句话说，它表明所有的天体都能有质量。前面的实例声明可以改写为清单 12。
 
 *清单 12. 在实例中使用属性*
     :Earth a :Planet;
-     :massKg "5.9742e24"^^xsdt:double.
+      :massKg "5.9742e24"^^xsdt:double.
 
 RDFS 提供的设施和 OWL 相比非常少。OWL 提供了大量的方法来描述两个类之间的微妙关系。现在没有足够的时间来讨论，仅通过例子了解一下 OWL（如清单 13 所示）。
 
 *清单 13. 使用 OWL 更详细地描述属性*
     :hasUsedSkill a owl:ObjectProperty;
-     rdfs:domain :User;
-     rdfs:range :Skill;
-     owl:equivalentProperty :hasSkill;
-     owl:inverseProperty :hasBeenUsedBy .
+      rdfs:domain :User;
+      rdfs:range :Skill;
+      owl:equivalentProperty :hasSkill;
+      owl:inverseProperty :hasBeenUsedBy .
 
 它说明了属性 :hasUsedSkill 和 :User、:Skill 这两类对象有关。它和 :hasSkill 属性相同（表示同一件事）。此外，还断言如果一项技巧被某人 :hasBeenUsedBy，就意味着此人 :hasSkill 和 :hasUsedSkill。换句话说，OWL 允许告诉推理引擎在本体中定义的各种属性之间隐含的等价意义。OWL 非常丰富，不过现在使用 RDFS 就行了，因为本教程没有涉及推理引擎的使用。
 
@@ -253,31 +253,31 @@ RDFS 提供的设施和 OWL 相比非常少。OWL 提供了大量的方法来描
     #JournalEntry class
     :JournalEntry a owl:Class . 
     :date
-     rdfs:domain :JournalEntry;
-     rdfs:range xsdt:datetime;
-     owl:cardinality 1. 
+      rdfs:domain :JournalEntry;
+      rdfs:range xsdt:datetime;
+      owl:cardinality 1. 
     :user
-     rdfs:domain :JournalEntry;
-     rdfs:range :User;
-     owl:cardinality 1. 
+      rdfs:domain :JournalEntry;
+      rdfs:range :User;
+      owl:cardinality 1. 
     :notes
-     rdfs:domain :JournalEntry;
-     rdfs:range xsdt:string;
-     owl:cardinality 1. 
+      rdfs:domain :JournalEntry;
+      rdfs:range xsdt:string;
+      owl:cardinality 1. 
     :tag
-     rdfs:domain :JournalEntry;
-     rdfs:range xsdt:string .
+      rdfs:domain :JournalEntry;
+      rdfs:range xsdt:string .
      
     #User class
     :User a owl:class . 
     :domainLogin
-     rdfs:domain :User;
-     rdfs:range :xsdt:string;
-     owl:cardinality 1. 
+      rdfs:domain :User;
+      rdfs:range :xsdt:string;
+      owl:cardinality 1. 
     :displayName
-     rdfs:domain :User;
-     rdfs:range xsdt:string;
-     owl:maxCardinality 1 .
+      rdfs:domain :User;
+      rdfs:range xsdt:string;
+      owl:maxCardinality 1 .
 
 下面在 JournalEntries.n3 文件中定义几个 JournalEntry 元素。首先应该定义一个 :User 实例（如清单 15 所示）。
 
@@ -376,7 +376,7 @@ RDF 没有外键和主键。它使用的是 URI，万维网的标准引用格式
     PREFIX : <http://aabs.purl.org/music#>
     SELECT ?instrument
     WHERE {
-     :andrew :playsInstrument ?instrument .
+      :andrew :playsInstrument ?instrument .
     }
 
 本教程中也使用 Turtle，因为 SPARQL 使用 Turtle 形式表示查询图模式。该查询说 “找到主语为 :andrew，谓语为 :playsInstrument的所有三元组，获取并返回匹配三元组中的宾语”。当然，SPARQL 不仅能做这些，不过三元组库建立并运行之后马上就可以实现该功能。您也许希望尽快获得效率，而不需要太多理论，但是没有本体就没有三元组库，没有三元组库就无法测试查询。因此首先要定义本体，运行它并进行查询。现在我们定义了本体和有关的实例数据，可以用这些数据配置 Joseki 了。
@@ -398,10 +398,10 @@ Joseki 和 Jena 都是用 Java 语言编写的，不过在本教程中不需要�
 *清单 19. 服务配置*
 
     [] rdf:type joseki:Service;
-     rdfs:label "SPARQL on the Professional Journal model";
-     joseki:serviceRef "journal";
-     joseki:dataset _:JournalDataset;
-     joseki:processor joseki:ProcessorSPARQL_FixedDS .
+      rdfs:label "SPARQL on the Professional Journal model";
+      joseki:serviceRef "journal";
+      joseki:dataset _:JournalDataset;
+      joseki:processor joseki:ProcessorSPARQL_FixedDS .
 
 Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle。总而言之，上述片段定义了类型为 joseki:Service 的一个实体，标签为 “SPARQL on the Professional Journal model”。配置文件中的其他实体通过 joseki:serviceRef “journal” 间接引用它。它存放后面将定义的数据集 _:JournalDataset。
 
@@ -410,11 +410,11 @@ Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle�
 *清单 20. 数据集配置*
 
     _:JournalDataset rdf:type ja:RDFDataset;
-     ja:defaultGraph _:JournalGraph;
-     rdfs:label "JournalDataset";
-     ja:namedGraph [
-      ja:graphName <http://aabs.purl.org/ontologies/2007/11/journal>;
-      ja:graph _:JournalGraph
+      ja:defaultGraph _:JournalGraph;
+      rdfs:label "JournalDataset";
+      ja:namedGraph [
+        ja:graphName <http://aabs.purl.org/ontologies/2007/11/journal>;
+        ja:graph _:JournalGraph
      ]; .
 
 这段 RDF 定义了由 _:JournalDataset 标识的 RDFDataset，其默认图定义为 _:JournalGraph。它定义了可以访问图中数据的 URI，并提供了数据集内容的默认访问方式。最后还需要定义本体及其数据的图。前面用 _:JournalGraph 指代这个图。清单 21 显示了图的定义。
@@ -422,9 +422,9 @@ Jena 和 Joseki（本教程中使用的工具）的配置设置都使用 Turtle�
 *清单 21. 图的定义*
 
     _:JournalGraph rdf:type ja:MemoryModel;
-     rdfs:label "JournalGraph";
-     ja:content [ja:externalContent <file:C:/dev/sparqlTutorial/Joseki/Journal.n3>];
-     ja:content [ja:externalContent <file:C:/dev/sparqlTutorial/Joseki/JournalEntries.n3>].
+      rdfs:label "JournalGraph";
+      ja:content [ja:externalContent <file:C:/dev/sparqlTutorial/Joseki/Journal.n3>];
+      ja:content [ja:externalContent <file:C:/dev/sparqlTutorial/Joseki/JournalEntries.n3>].
 
 最后一个元素定义了一个图 — Giant Global Graph 或 GGG 的一小部分，Tim Burners-Lee 最近尝试用它标记语义 Web。要记住，所有的 RDF 定义的都是图。因此毫不奇怪，三元组库的配置就是发现数据和将其放入图中，或者指定公开这些图的方式。
 要记住，下载的 zip 文件解压到哪里，ja:content URI 就应该指向哪里。我们将定义一个内存模型对象 JournalGraph，链接到两个外部磁盘文件 Journal.n3 和 JournalEntries.n3。这就是下面要关注的焦点 — 它们就是定义本体的地方（这是语义 Web 的说法，程序员更愿意称之为对象或者域模型）。
@@ -447,8 +447,308 @@ SELECT 查询形式用于标准查询。以标准 SPARQL XML 结果格式返回�
 
 为了节约空间，本教程中的例子将只保留前两个结果，除非必须看到全部内容。多数查询返回的结果都多于两个。如果您痛恨那些罗罗嗦嗦的手册和书籍，我和您一样。本教程会尽量避免这种情况。本教程中重复的一个地方是查询的前缀。查询应该能够立即使用，因此它们必须是自成体系的。您可以直接将其拖到查询表单中执行。
 
+------
+
 **分解查询**
 
 清单 22 中的查询获取所有的注释并按照时间先后返回。这一节我们看看典型的 SPARQL 查询语法。下一节 将讨论三元组库用于查找和查询匹配的三元组的算法。
 
+*清单 22. 按日期顺序返回注释的查询*
 
+    PREFIX : <http://aabs.purl.org/ont/journal#>
+    SELECT ?notes
+    WHERE {
+      ?e a :JournalEntry .
+      ?e :notes ?notes .
+      ?e :date ?date .
+    }
+    ORDER BY ?date
+
+每个 SPARQL SELECT 查询都包括一组按顺序排列的部分。第一部分是序言，包括可选的 BASE 定义和一些前缀定义。其后的 SELECT 部分以 SELECT 开始，描述搜索哪个图的可选的数据集部分，后面用 WHERE 子句表达描述目标结果的图模式。WHERE 子句之后是一些结果修饰符：Order 子句、Limit 子句或者 Offset 子句。这些修饰符将在后面介绍。
+
+结果如清单 23 所示。
+
+*清单 23. 清单 22 的查询结果*
+
+    notes "Today I wrote some more content for the great new SPARQL tutorial ... "Today I learnt about insane asylums" ...
+
+要使返回结果按倒序排列，可通过选择顺序修饰符 ASC()、DESC() 实现。下面的命令可以使结果按相反的顺序出现：ORDER BY DESC(?date)。
+如果还想在日期排序中根据其他变量排序，可以在 ORDER BY 子句中添加其他变量：ORDER BY DESC(?date) ASC(?notes)。
+如果需要把结果限制到前 5 个，可使用 LIMIT 运算符（如清单 24 所示）。
+
+*清单 24. 限制返回的结果数量*
+
+    SELECT ?notes
+    WHERE {
+      ?e a :JournalEntry .
+      ?e :notes ?notes .
+      ?e :date ?date .
+    }
+    ORDER BY ?date
+    LIMIT 5
+
+如果准备跳过某些结果，可使用 OFFSET 修饰符（如清单 25 所示）。
+
+*清单 25. 跳过部分结果*
+
+    SELECT ?notes
+    WHERE {
+      ?e a :JournalEntry .
+      ?e :notes ?notes .
+      ?e :date ?date .
+    }
+    ORDER BY ?date
+    LIMIT 5
+    OFFSET 150
+
+如果进行过 SQL 开发，应该很熟悉这些修饰符。
+
+------
+
+**搜索三元组库**
+
+使用图模式获取结果的过程非常简单。多数三元组库都在内存或者数据库中保存三元组，可按照主语、谓语和宾语查询。SPARQL 在查询图模式中用一组三元组表示。首先假设图模式中只有一个三元组。查询可能提供具体的主语 URI。这样的话，三元组库可以忽略没有该主语的所有三元组。然后再筛选掉与图模式提供 的谓语不匹配的所有三元组。最后，如果 SPARQL 提供了具体的宾语，还可进一步排除不匹配的三元组。
+
+如果查询的主语、谓语或宾语中使用了变量，则不排除那些不匹配的三元组，三元组库将其全部保留，因为可能和变量匹配。上例中第一个三元组是 ?e a :JournalEntry .。a 是 rdfs:type 的简写，因此三元组库可以忽略所有谓语不是 rdfs:type 的三元组。然后再筛选掉宾语不是 :JournalEntry 的三元组。余下的就是可以作为 ?e 结果的三元组。
+
+上述查询的图模式包含多个三元组，因此三元组库在完成之前还需要对其他三元组做同样的处理。如果一个变量出现在多个位置，则可以使用所有那些值相同的三元组的交集。上例中所有匹配的三元组必须有一个匹配的主语。如果不符合，则丢弃，结果中只保留剩下的三元组。变量匹配可能有多种方式，所以会有多个结果。三元组库的最后一步是根据结果集需要的变量创建结果集。
+
+在搜索的最后，三元组库将得到包含 ?e、?notes、?date 的结果集，这些都是查询中定义的变量。如果 SELECT 查询的形式为 “SELECT ?date ?notes”，则不返回 ?e，虽然在查询中很重要。
+
+上述过程是实际过程的简化形式。有多种方法可以加快这个过程（比如一次进行多项匹配）。完成的任务将是一样的。
+
+**按照日期顺序取得所有预约列表**
+
+清单 22 中的查询可以创建一个简单的微型博客，按照日期顺序显示注释。和 twitter 差不多。这个查询采用相同的形式，按照日期顺序返回所有的预订列表。如果准备组织新的项目团队，这样的查询是必需的，以便筛掉已经预定的雇员。
+
+在清单 26 中，必须连接多个类的数据：EmployeeBooking、Customer 和 User。SQL 表示连接表的语法非常笨拙。所幸的是 SPARQL 不会这样。它根本就是为这类查询而设计的，因此非常简单。您需要定义一个图匹配模式，定义需要返回的每个类的属性。在三元组世界中，连接的结果是另一个三元组。清单 26 展示了这个查询。
+
+*清单 26. 按日期返回所有的预约信息*
+
+    PREFIX u: <http://aabs.purl.org/ont/users#>
+    PREFIX j: <http://aabs.purl.org/ont/journal#>
+    PREFIX b: <http://aabs.purl.org/ont/avail#>
+    SELECT ?dn ?custName ?startDate ?endDate
+    WHERE {
+      ?booking a b:EmployeeBooking ;
+        b:startDate ?startDate ;
+        b:endDate ?endDate ;
+        b:employee ?dl ;
+        b:with ?cust .
+      ?cust a b:Customer ;
+        b:name ?custName .
+      ?emp a u:User ;
+        u:domainLogin ?dl ;
+        u:displayName ?dn .
+    }
+    ORDER BY ?startDate
+
+首先定义了三个名称空间前缀：u、j 和 b，分别用于用户、日志和预约。然后告诉 Joseki 您需要和变量 ?dn、?custName、?startDate 以及 ?endDate 的匹配。?dn 仅仅是 “display name” 的简写形式，也是查询运行后包含的内容。
+
+在基本的图模式中定义了预约（称为 ?booking）及其起始和结束日期（?startDate 和 ?endDate）。意思是说在 b:EmployeeBooking类型的图中定义了一些实例。只要发现 b:Employeebooking 类型的匹配，就一定有 b:startDate 和 b:endDate 类型的属性。与这些属性匹配的内容可以放在变量 ?startDate 和 ?endDate 中。
+
+查询结果定义规定必须取得雇员的 u:displayName 和与其联系的客户的 b:name。查询必须定义谁以及这些属性是什么，以便获得正确的匹配。因此定义 ?emp 和 ?cust 实例及其属性。查询只需要将其链接起来，以引入将预约、用户和客户类的实例链接到一起的三元组。EmployeeBooking 的对象属性 b:employee 链接一个特定的用户实例。它的 b:with 属性则链接到 Customer 类。
+添加 'b:with ?cust' 三元组（主语仍然是 ?booking），这可以告诉 SPARQL 只需要返回和 ?booking 返回结果匹配的 ?cust（如表 1 所示）。这就是 SPARQL 中的连接。:User 类也是如此。
+
+*表 1. 与 ?booking 匹配的 ?cust 的连接结果*
+
+|dn|custName|startDate|endDate|
+|----|----|----|----|
+|"Andrew Matthews"|"IBM"|"2008-03-01T09:00:00" ^^xsdt:dateTime|"2008-03-08T09:00:00" ^^xsdt:dateTime|
+|"John Connor"|"IBM"|"2008-03-01T09:00:00" ^^xsdt:dateTime|"2008-03-08T09:00:00" ^^xsdt:dateTime|
+
+连接很简单吧？只需要声明两个类的实例之间存在关系，SPARQL 只返回存在这种关系的匹配。
+
+------
+
+**获取所有用户（雇员）**
+
+这个查询和前面的查询非常相似。清单 27 中的查询使用了默认前缀，因为它只处理一个本体中的 URI。因为可以假定该类和对象属性的 URI，因此可以使用分号（:）作为前缀。
+
+*清单 27. 使用默认前缀的查询*
+
+    PREFIX : <http://aabs.purl.org/ont/users#>
+    SELECT DISTINCT ?dl ?dn
+    WHERE {
+      ?u a :User ;
+        :domainLogin ?dl ;
+        :displayName ?dn .
+    }
+    ORDER BY ?dn
+
+表 2 显示了 清单 27 中查询的结果。
+
+*表 2. 默认前缀查询的结果*
+
+dl|dn
+--|--
+"someDomain/andrew.matthews"|"Andrew Matthews"
+"someDomain/john.connor"|"John Connor"
+"someDomain/john.doe"|"John Doe"
+"someDomain/sarah.connor"|"Sarah Connor"
+
+**获取通过关键字筛选的所有日志条目的注释**
+
+作为对公司内其他雇员的一项服务，可以按照作者附加到日志条目上的标签进行聚合。从而为 RDF 或者 Java 开发提供专门的流。希望了解和 RDF 有关的工作的用户可以订阅这样的流，从而得到量身定做的提要。
+
+这个查询很有意思，因为它引入了 FILTER 关键字。允许用表达式来定义匹配变量的属性。该查询假设您只对那些包含关键字 SPARQL 的注释感兴趣。
+
+清单 28 中的查询仅仅取得所有日志条目的注释部分 — 不想看到大量的文本。这是使用 FILTER 关键字的第一个查询。筛选提供了一种非图形化的方法来定义匹配结果特性。下面的例子使用正则表达式匹配包含单词 SPARQL 的条目。
+
+*清单 28. 检索注释中包含单词 “today” 的所有日志条目*
+
+    PREFIX : <http://aabs.purl.org/ont/journal#>
+    SELECT ?notes
+    WHERE {
+      ?e a :JournalEntry .
+      ?e :notes ?notes .
+      FILTER regex(?notes, "today")
+    }
+    ORDER BY ?date
+
+该查询使用了默认名称空间前缀分号（:）。该查询仅指一个本体中定义的实体，因此谓语和类型没有歧义。FILTER 表达式使用正则表达式说明需要包含单词 SPARQL 的日志条目。结果有两个，如清单 29 所示。
+
+清单 29. 结果
+    notes
+    "Went to work on the SPARQL tutorial today. I seem to have a terminator fixation."
+    "Today I wrote some more content for the great new SPARQL tutorial that I've been preparing. I used some Turtle, and I defined a simple ontology for defining journal entries. This is an example of one of those entries!"
+
+正则表达式是可用的函数和运算符之一。它来自 **XPath** 和 **XQuery** 系统。FILTER 表达式支持中缀和前缀运算符以及括号的一般语法，因此清单 30 也是有效的。
+
+*清单 30. 使用 FILTER 限制图匹配的更多例子*
+    FILTER (?t = "RDF" || ?t = "OWL" || ?t = "cash")
+    FILTER ( (?start > "2008-03-05T09:00:00"^^xsdt:dateTime && ?start < "2008-03-07T09:00:00"^^xsdt:dateTime)|| (?start < "2008-03-05T09:00:00"^^xsdt:dateTime && ?end > "2008-03-05T09:00:00"^^xsdt:dateTime) )
+
+运算符、函数的完整列表以及类型匹配请参阅 SPARQL 文档。
+
+**获取具备所需技能的所有用户**
+
+如果需要组建一个团队（这也是本教程中的例子），需要一份具备将要使用的技术知识的人员清单。要找到这些人，需要提供要寻找的所有技能或技术，看看谁和这些技能匹配。这个查询的意义在于它使用了 UNION 运算符。UNION 可以合并单独查询的结果。可以用它将每种技术的查询结果合并起来。
+
+这个例子获取编写的日志条目中标记有 RDF、OWL 或 SPARQL 的所有用户的显示名称。UNION 运算符允许合并可替换的图模式的结果。
+一般来说，返回结果前必须匹配所有的图模式。但是 UNION 只需要满足任何一个子图模式即可。在清单 31 所示查询中，任何能够匹配 {?e j:tag "RDF".}、{?e j:tag "OWL".} 或 {?e j:tag "SPARQL".} 的结果都是可接受的。它相当于 OR 运算符，后面将看到 || 运算符也能实现同样的效果。
+
+*清单 31. 获取具备匹配技能的用户*
+
+    PREFIX u: <http://aabs.purl.org/ont/users#>
+    PREFIX j: <http://aabs.purl.org/ont/journal#>
+    SELECT DISTINCT ?dn
+    WHERE {
+      ?u a u:User; u:displayName ?dn .
+      ?e a j:JournalEntry; j:user ?u .
+      { {?e j:tag "RDF".} UNION {?e j:tag "OWL".} UNION {?e j:tag "SPARQL".} }
+    }
+
+通常，定义所处理的本体的名称空间以及感兴趣的变量。然后定义希望用户匹配的属性。这里定义了希望连接的两个实例（?u 表示用户，?e 表示日志条目）。为了建立连接，在日志条目中描述 j:user 属性。实例及其之间的关系被定义之后，另一个图模式根据附加到日志条目的标记将匹配项合并到一起（如表 3 所示）。
+
+*表 3. 连接日志实例和用户类的实例*
+
+|dn|
+|--|
+|"Andrew Matthews"|
+|"John Doe"|
+
+表示该查询的另一种方法是使用 FILTER。
+
+清单 31 中的简单查询将日志实例和用户类实例连接起来。该查询（清单 32）引入了一个字符串文字作为三元组模式 <?e j:tag "RDF"> 的宾语。它的意思很清楚，但是如果没有读过本教程开始部分关于 RDF 和 RDF 的介绍，现在最好读一读。
+
+*清单 32. 该查询使用 FILTER 实现和清单 31 中的 UNION 同样的结果*
+
+    PREFIX u: <http://aabs.purl.org/ont/users#>
+    PREFIX j: <http://aabs.purl.org/ont/journal#>
+    SELECT DISTINCT ?dn WHERE {
+      ?u a u:User; u:displayName ?dn .
+      ?e a j:JournalEntry; j:user ?u ; j:tag ?t .
+      FILTER (?t = "RDF" || ?t = "OWL" || ?t = "SPARQL")
+    }
+
+筛选器的逻辑意义和前面的基于 UNION 的查询一样，但如果不熟悉多图模式的话可能更容易理解。
+
+**给定日期哪位雇员开始为客户服务**
+
+很多查询可能需要对数据进行概括，或者得到许多问题（比如 “Do we have someone working at X this week?”）的是或者否的简要答案。SPARQL 可使用 ASK 查询类型解决这类问题。
+
+清单 33 中的查询是否有人在 3月 18 日开始在 IBM 工作。不需要关心是谁，只想知道有没有。
+
+*清单 33. 询问是否有人在 3 月 18 日开始在 IBM 工作*
+
+    PREFIX b: <http://aabs.purl.org/ont/avail#>
+    PREFIX u: <http://aabs.purl.org/ont/users#>
+    PREFIX xsdt: <http://www.w3.org/2001/XMLSchema#>
+
+    ASK
+    {
+      ?x a u:User;
+        u:displayName ?dn;
+        u:domainLogin ?dl.
+      ?c a b:Customer;
+        b:name "IBM".
+      ?b a b:EmployeeBooking;
+        b:with ?c;
+        b:employee ?dl;
+        b:startDate "2008-03-18T09:00:00"^^xsdt:dateTime.
+    }
+
+
+ASK 查询只需要返回是否找到了结果，返回结果基本上不需要占用带宽。该查询的格式类似于 SELECT。但是没有定义返回变量，因为不需要返回变量。相反，它返回 true 或者 false 表示查询（如果使用 SELECT）有没有返回数据（如清单 34 所示）。
+
+*清单 34. ASK 查询返回 true*
+
+    ASK => true
+
+通过上面这些查询示例，您应该对 SPARQL 有一定的了解了。本文未进行详细讨论，可以通过 下载 部分的示例代码了解从这个日志示例导出数据的各种方法。
+ 
+### 结束语
+
+我们学习了语义 Web 如何使用 RDF、OWL 和 Turtle 工作。您了解了使用 Turtle 手工编写 RDF 的最简方式，以及 SPARQL 如何使用 Turtle。现在您已经具备足够的知识，可以阅读 W3C 和其他团体发布的各种语义 Web 标准。您可以编写自己的本体，对它们进行托管，以及使用 SPARQL 对它们进行查询。语义 Web 的底层技术非常复杂，这里没有全部介绍。但是您现在具备了足够的知识，可以充满自信地去探索了。
+
+本教程中的查询涉及到了 SPARQL 的很多功能（但不是全部）。它们允许您轻松地连接类，使用复杂的表达式语言筛选结果。动态构造 RDF 以最大化存储数据的价值和互操作性。您编写了不占用带宽的查询，其他查询则提供了可在您的三元组库中定义信息的元数据。也希望您对 SPARQL 强大功能有所了解。
+
+------
+
+## 下载
+
+描述|名字|大小|下载方法
+--|--|--|--
+示例源代码|x-sparql.zip|12KB|[HTTP](http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=316306&filename=x-sparql.zip&method=http&locale=zh_CN)
+
+*原文链接已经失效了，可以下载本文图7 gif文件解压即可得到代码*
+
+------
+
+### 参考资料
+
+**学习**
+
+- [The RDF Primer from W3C](http://www.w3.org/TR/rdf-primer/)：这是一个关于使用 RDF 表示知识的重要指南。
+- [W3C SPARQL 规范](http://www.w3.org/TR/rdf-sparql-query/)：阅读 SPARQL 查询语言规范。
+- [W3C Turtle 规范](http://www.w3.org/2001/sw/)：关于 Turtle 语法和功能的详细说明。
+- [W3C 语义 Web 门户网站](http://www.w3.org/TR/webarch/)：了解 W3C 开发的各种与语义 Web 有关的技术。
+- [W3C Web 体系结构文档](http://www.w3.org/TR/webarch/)：有关 URI 使用的最佳实践来源。
+- [302 Semantic Web Videos](http://www.semanticfocus.com/blog/entry/title/302-semantic-web-videos-and-podcasts/)（James Simmons，2008 年 2 月）：数百小时的视频资料，涉及到语义 Web 的最新进展、研究方向和评论。非常值得一看。
+- [Weaving the Web](http://www.amazon.com/Weaving-Web-Tim-Berners-Lee/dp/0752820907)（Tim Berners-Lee，Texere Publishing，2001 年 6 月）：这部引人入胜的著作讨论了 Web 的过去、现在和未来。
+- [PlanetRDF](http://www.planetrdf.com) ：聚合了和语义 Web 有关的博客文章。
+- [The Wandering Glitch](http://aabs.wordpress.com/semantic-web/)：阅读本文作者 Andrew Matthews 的语义 Web 博客文章。
+- [Introduction to Jena](http://www.ibm.com/developerworks/xml/library/j-jena/)（Philip McCarthy，developerWorks，2004 年 6 月）：Jena 使用指南。
+- [Search RDF data with SPARQL](http://www.ibm.com/developerworks/xml/library/j-sparql/)（Philip McCarthy，developerWorks，2005 年 5 月）：SPARQL 中级指南。
+- [An introduction to RDF](http://www.ibm.com/developerworks/xml/library/w-rdf/)（Uche Ogbuji，developerWorks，2000 年 12 月）：介绍 RDF 基础知识的另一篇文章。
+- [W3C 的 OWL 概述](http://www.w3.org/TR/owl-features/)：了解 OWL 用途的最佳地方。
+- [FOAF-Project](http://www.foaf-project.org/)：了解这种描述人及相互关系的标准 RDF 本体论。
+- [IBM XML 认证](http://www.ibm.com/certify/certs/01001503.shtml)：了解如何才能成为一名 IBM 认证的 XML 及相关技术的开发人员。 
+- [XML 技术库](http://www.ibm.com/developerworks/views/xml/library.jsp)：developerWorks XML 专区提供了大量技术文章和技巧、教程、标准以及 IBM 红皮书。
+- [developerWorks 技术活动和网络广播](http://www.ibm.com/developerworks/offers/techbriefings/?S_TACT=105AGX06&S_CMP=art)：随时关注技术的最新进展。
+- [developerWorks XML 专区](http://www.ibm.com/developerworks/xml)：了解 XML。
+- [developerWorks podcasts](http://www.ibm.com/developerworks/podcast/?S_TACT=105AGX06&S_CMP=ART)：聆听软件开发人员之间有趣的访谈和讨论。
+
+### 获得产品和技术
+
+- [Joseki Web 站点](http://www.joseki.org/)：请访问 Joseki 服务器的主站点。
+- [IBM 试用软件](http://www.ibm.com/developerworks/downloads/?S_TACT=105AGX06&S_CMP=art)：使用试用软件开发您的下一个项目，可直接从 developerWorks 下载。
+
+### 讨论
+
+- [参与论坛讨论](http://www.ibm.com/developerworks/forums/forum.jspa?forumID=1258)。
+- [XML 讨论论坛](http://www.ibm.com/developerworks/forums/dw_xforums.jsp)：参与任何关于 XML 的讨论。
+- [developerWorks XML 专区](http://www.ibm.com/developerworks/blogs/)：分享您的想法：阅读本文后请把您的建议和想法发表到这个论坛上。XML 专区编辑负责该论坛，欢迎您的参加。
+
+developerWorks 博客：请访问这些博客并加入 developerWorks 社区。
