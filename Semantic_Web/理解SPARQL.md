@@ -584,12 +584,12 @@ SELECT 查询形式用于标准查询。以标准 SPARQL XML 结果格式返回�
 
 *表 2. 默认前缀查询的结果*
 
-dl|dn
---|--
-"someDomain/andrew.matthews"|"Andrew Matthews"
-"someDomain/john.connor"|"John Connor"
-"someDomain/john.doe"|"John Doe"
-"someDomain/sarah.connor"|"Sarah Connor"
+|dl|dn|
+|---|---|
+|"someDomain/andrew.matthews"|"Andrew Matthews"|
+|"someDomain/john.connor"|"John Connor"|
+|"someDomain/john.doe"|"John Doe"|
+|"someDomain/sarah.connor"|"Sarah Connor"|
 
 **获取通过关键字筛选的所有日志条目的注释**
 
@@ -650,7 +650,7 @@ dl|dn
 *表 3. 连接日志实例和用户类的实例*
 
 |dn|
-|--|
+|---|
 |"Andrew Matthews"|
 |"John Doe"|
 
