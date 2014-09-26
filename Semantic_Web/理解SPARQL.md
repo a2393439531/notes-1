@@ -376,6 +376,7 @@ RDF 没有外键和主键。它使用的是 URI，万维网的标准引用格式
 由于三元组库是一个庞大无序的三元组集合，SPARQL 查询通过定义匹配三元组的模板（称为 Graph Pattern）来完成。RDF 和图一节曾经提到，三元组库中的三元组构成了描述一组资源的图。使用 SPARQL 提取三元组库数据需要定义和图中语句相匹配的模式。这将会是类似这样的问题：找出那些描述了 “plays guitar” 的语句的所有主语。清单 18 展示了一个对利用 清单 1 音乐本体定义的数据进行的查询。
 
 *清单 18. 确定 Andrew 所奏乐器的 SPARQL 查询。适用于清单 1 中定义的图*
+
     PREFIX : <http://aabs.purl.org/music#>
     SELECT ?instrument
     WHERE {
@@ -611,7 +612,8 @@ dl|dn
 
 该查询使用了默认名称空间前缀分号（:）。该查询仅指一个本体中定义的实体，因此谓语和类型没有歧义。FILTER 表达式使用正则表达式说明需要包含单词 SPARQL 的日志条目。结果有两个，如清单 29 所示。
 
-清单 29. 结果
+*清单 29. 结果*
+
     notes
     "Went to work on the SPARQL tutorial today. I seem to have a terminator fixation."
     "Today I wrote some more content for the great new SPARQL tutorial that I've been preparing. I used some Turtle, and I defined a simple ontology for defining journal entries. This is an example of one of those entries!"
@@ -619,6 +621,7 @@ dl|dn
 正则表达式是可用的函数和运算符之一。它来自 **XPath** 和 **XQuery** 系统。FILTER 表达式支持中缀和前缀运算符以及括号的一般语法，因此清单 30 也是有效的。
 
 *清单 30. 使用 FILTER 限制图匹配的更多例子*
+
     FILTER (?t = "RDF" || ?t = "OWL" || ?t = "cash")
     FILTER ( (?start > "2008-03-05T09:00:00"^^xsdt:dateTime && ?start < "2008-03-07T09:00:00"^^xsdt:dateTime)|| (?start < "2008-03-05T09:00:00"^^xsdt:dateTime && ?end > "2008-03-05T09:00:00"^^xsdt:dateTime) )
 
