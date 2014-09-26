@@ -204,6 +204,7 @@ a 仅仅是 rdfs:type 的简写形式，没有其他意义。
 RDFS 也提供类的属性。清单 11 说明了属性的声明方法。
 
 *清单 11. 为类 :HeavenlyBody 定义属性*
+
     :massKg
       rdfs:domain :HeavenlyBody;
       rdfs:range xsdt:double .
@@ -211,12 +212,14 @@ RDFS 也提供类的属性。清单 11 说明了属性的声明方法。
 这里声明的属性 :massKg 从 :HeavenlyBody 映射到一个双精度数。换句话说，它表明所有的天体都能有质量。前面的实例声明可以改写为清单 12。
 
 *清单 12. 在实例中使用属性*
+
     :Earth a :Planet;
       :massKg "5.9742e24"^^xsdt:double.
 
 RDFS 提供的设施和 OWL 相比非常少。OWL 提供了大量的方法来描述两个类之间的微妙关系。现在没有足够的时间来讨论，仅通过例子了解一下 OWL（如清单 13 所示）。
 
 *清单 13. 使用 OWL 更详细地描述属性*
+
     :hasUsedSkill a owl:ObjectProperty;
       rdfs:domain :User;
       rdfs:range :Skill;
