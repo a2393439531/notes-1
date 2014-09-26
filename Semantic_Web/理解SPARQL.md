@@ -715,7 +715,7 @@ ASK 查询只需要返回是否找到了结果，返回结果基本上不需要�
 ## 下载
 
 描述|名字|大小|下载方法
---|--|--|--
+---|---|---|---
 示例源代码|x-sparql.zip|12KB|[HTTP](http://www.ibm.com/developerworks/apps/download/index.jsp?contentid=316306&filename=x-sparql.zip&method=http&locale=zh_CN)
 
 *原文链接已经失效了，可以下载本文图7 gif文件解压即可得到代码*
