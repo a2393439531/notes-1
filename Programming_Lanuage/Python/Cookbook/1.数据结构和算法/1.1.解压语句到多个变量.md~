@@ -1,0 +1,77 @@
+# 1.1 解压序列到多个变量
+
+## 问题
+
+你有一个有N个元素的元组或序列，但你想把这N个元素解压到N个变量中。
+
+## 解决方法
+
+任何序列（或迭代器）都可以使用一个简单的赋值操作解压到多个变量中，唯一要求是变量的个数和结构和序列一致，比如：
+
+```python
+>>> p = (4, 5)
+>>> x, y = p
+>>> x
+4
+>>> y
+5
+>>>
+
+>>> data = [ 'ACME', 50, 91.1, (2012, 12, 21) ]
+>>> name, shares, price, date = data
+>>> name
+'ACME'
+>>> date
+(2012, 12, 21)
+
+>>> name, shares, price, (year, mon, day) = data
+>>> name
+'ACME'
+>>> year
+2012
+>>> mon
+12
+>>> day
+21
+>>>
+    ```
+    
+如果有数量不一致的情况，将得到一个错误，比如：
+
+```python
+>>> p = (4, 5)
+>>> x, y, z = p
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: need more than 2 values to unpack
+```
+
+## 讨论
+
+解压过程实际上可以应用于任何迭代的object，并不局限于元组或者列表。包括string、file、iterators和generators，比如：
+
+```python
+>>> s = 'Hello'
+>>> a, b, c, d, e = s
+>>> a
+'H'
+>>> b
+'e'
+>>> e
+'o'
+>>>
+```
+
+解压时，你有时可能会想抛弃特定的值。Python没有这样的语法，但你可以抛弃那个变量，例如：
+
+```python
+>>> data = [ 'ACME', 50, 91.1, (2012, 12, 21) ]
+>>> _, shares, price, _ = data
+>>> shares
+50
+>>> price
+91.1
+>>>
+```
+
+然而，请务必确认那个变量不是你正在用的变量。

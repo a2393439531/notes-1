@@ -1,0 +1,89 @@
+# 1.13.使用Key对字典排序
+
+## 问题
+
+如何对字典中的一个或者多个值排序？
+
+## 解决方法
+
+**`operator.itemgetter()`方法。**
+
+假如有以下数据：
+
+```python
+rows = [
+    {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
+    {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
+    {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
+    {'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+]
+```
+
+无论对该字典哪个`field`排序，使用这个函数，都相当easy，e.g：
+
+```python
+from operator import itemgetter
+
+rows_by_fname = sorted(rows, key=itemgetter('fname'))
+rows_by_uid = sorted(rows, key=itemgetter('uid'))
+
+print(rows_by_fname)
+print(rows_by_uid)
+```
+
+输出如下：
+
+```python
+[{'fname': 'Big', 'uid': 1004, 'lname': 'Jones'},
+ {'fname': 'Brian', 'uid': 1003, 'lname': 'Jones'},
+ {'fname': 'David', 'uid': 1002, 'lname': 'Beazley'},
+ {'fname': 'John', 'uid': 1001, 'lname': 'Cleese'}]
+ 
+[{'fname': 'John', 'uid': 1001, 'lname': 'Cleese'},
+ {'fname': 'David', 'uid': 1002, 'lname': 'Beazley'},
+ {'fname': 'Brian', 'uid': 1003, 'lname': 'Jones'},
+ {'fname': 'Big', 'uid': 1004, 'lname': 'Jones'}]
+```
+
+`itemgetter()`函数还能接受多个key参数，e.g：
+
+```python
+rows_by_lfname = sorted(rows, key=itemgetter('lname','fname'))
+print(rows_by_lfname)
+```
+
+输出如下：
+
+```python
+[{'fname': 'David', 'uid': 1002, 'lname': 'Beazley'},
+ {'fname': 'John', 'uid': 1001, 'lname': 'Cleese'},
+ {'fname': 'Big', 'uid': 1004, 'lname': 'Jones'},
+ {'fname': 'Brian', 'uid': 1003, 'lname': 'Jones'}]
+```
+
+## 讨论
+
+此例中，`rows`被传给内建函数`sorted`，它接收关键词参数`key`。这个参数被期望是一个可调用的（函数），它能接收rows输入并返回一个作为排序准则的值。`itemgetter()`函数正好创建了这么个可调用的（函数）
+
+`operator.itemgetter()`函数作为参数实质是查询索引，被用来从`rows`中获取查询值，它可以是字典的key，数字列表的元素，也可以是任何能从`__getitem__`方法获得的值，如果传多个索引值给`itemgetter`，调用函数的执行会返回所有元素的元组，而`sorted()`方法则根据元组的排序规则对输出排序。这对多个field值同时排序时有用（正如上述代码所示范的）。
+
+`itemgetter`的功能有时被`lambda`表达式取代，e.g：
+
+```python
+rows_by_fname = sorted(rows, key=lambda r: r['fname'])
+rows_by_lfname = sorted(rows, key=lambda r: (r['lname'],r['fname']))
+```
+
+这样做通常都好用。然而引入`itemgetter`的做法速度更快。因此，考虑到性能你会喜欢使用它的。
+
+最后，但并非最不重要的是，不要忘记这个技术可应用于`min()`和`max()`等函数。e.g：
+
+```python
+>>> min(rows, key=itemgetter('uid'))
+{'fname': 'John', 'lname': 'Cleese', 'uid': 1001}
+>>> max(rows, key=itemgetter('uid'))
+{'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+>>>
+```
+
+
