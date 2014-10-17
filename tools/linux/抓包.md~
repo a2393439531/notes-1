@@ -1,0 +1,21 @@
+# linux 抓包工具
+
+搜罗了一大堆工具，但我只是想要一个linux上类似fiddle的HTTP、HTTPS抓包的工具。
+
+以下是：
+
+- iptables命令
+- [Charles](http://www.charlesproxy.com/)
+- 腾讯前端开发者的[Rythem](http://www.alloyteam.com/2012/05/web-front-end-tool-rythem-1/)
+- [Tinyproxy](https://banu.com/tinyproxy/)
+- [WebScarab](https://www.owasp.org/index.php/Category:OWASP_WebScarab_Project)
+- etc.
+
+最后确定用[WebScarab](https://www.owasp.org/index.php/Category:OWASP_WebScarab_Project)，其[github](https://github.com/OWASP/OWASP-WebScarab)的代码下来后不会用，后来找到了其sourceforge上的2007年的jar包，总算是装上了。
+
+linux的抓包工具几乎全是通过proxy实现HTTP监控的，WebScarab也不例外，其默认的proxy为127.0.0.1:8008，只要设置浏览器或其他网络访问API的代理为127.0.0.1:8008，然后在WebScarab里设置你所在网络的代理即可。运行后和fiddle很相似，对我来说很好用。
+
+**要注意**，如果你的网络代理有用户名密码，貌似WebScarab无能为力
+
+
+
