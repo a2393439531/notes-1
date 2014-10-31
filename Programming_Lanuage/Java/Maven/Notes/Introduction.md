@@ -183,3 +183,4 @@ activation节点中的激活条件中常见的有如下几个：
 - **file**
     - 检查文件相关内容，包含两个子节点：exists和missing，用于分别检查文件存在和不存在两种情况。
 
+更多参见[Maven profile setting](http://maven.apache.org/guides/introduction/introduction-to-profiles.html)
