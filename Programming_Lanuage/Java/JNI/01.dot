@@ -1,0 +1,4 @@
+digraph s{ 
+ n1[label="Node 1"]; n2[label="Node 2"]; 
+ n1 -> n2[style=dotted label="A dotted edge"]
+}
