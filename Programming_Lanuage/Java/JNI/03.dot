@@ -1,0 +1,26 @@
+digraph G {
+    compound=true;
+    # bgcolor=white;
+    edge [arrowhead = none];
+    subgraph "cluster_C_Side" {
+        label = "C Side";
+        node[shape=box, style=filled, fillcolor=".7 .3 1.0", color=green,fontsize=10]
+        Function;
+        Libraries;
+    }
+
+    subgraph "cluster_Java_Side" {
+        label = "Java Side";
+        node [style = filled, color = green];
+        color = blue;
+        Exceptions;
+        Classes;
+        VM;
+    } 
+
+    Function -> JNI;
+    Libraries -> JNI;
+    JNI -> Exceptions;
+    JNI -> Classes;
+    JNI -> VM;
+}
